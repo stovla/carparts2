@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+body {
+    padding: 20px 10%;
+}
+
+.carpart-details {
+    padding: 50px;
+}
+
+.carpart-form {
+    max-width: 750px;
+}
+
+.input-group label {
+    min-width: 140px;
+    text-align: right;
+}
+
+img {
+    width: 350px;
+    height: 400px;
+    border: 1px solid red;
+}

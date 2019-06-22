@@ -24,9 +24,16 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/font-awesome/css/font-awesome.css",
+              "./node_modules/materialize-css/dist/css/materialize.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.min.js",
+              "./node_modules/materialize-css/dist/js/materialize.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -115,6 +122,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "Carparts2"
 }

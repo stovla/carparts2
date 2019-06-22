@@ -1,0 +1,39 @@
+<div class="clearfix">
+  <p class="pull-left">
+      You have {{ carPartsList.length }} parts in your list.
+  </p>
+  <button type="button" class="btn btn-primary pull-right" (click)="addNew()">Add Car Part</button>
+</div>
+<br>
+<div class="panel panel-primary">
+  <table class="table table-striped">
+      <thead class="bg-primary ">
+          <tr class="table-success text-center">
+              <th class="text-center">ID</th>
+              <th>Part Name</th>
+              <th>VW OEM NUMBER</th>
+              <th>Webshop</th>
+              <th class="text-center">Have it?</th>
+              <th>Purchase Date</th>
+              <th>Price</th>
+              <th>Actions</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let carPart of carPartsList"> <!-- *ngFor="let carPart of carPartsList | async; trackBy: trackList()"> --> 
+              <!-- <td>{{ carPart }}</td> -->
+              <td class="text-center">{{ carPart.id }}</td>
+              <td>{{ carPart.partName }}</td>
+              <td>{{ carPart.partNumber }}</td>
+              <td>{{ carPart.webshop }}</td>
+              <td class="text-center" *ngIf="carPart ? 'Yes' : 'No'">No</td>
+              <td>{{ carPart.purchaseDate }}</td>
+              <td>{{ carPart.price }}</td>
+              <td>
+                  <button [routerLink]="['details', carPart.id, carPart.partName ]" class="btn btn-sm btn-default glyphicon glyphicon-edit">Details</button>
+                  <button type="button" class="btn btn-sm btn-default glyphicon glyphicon-trash">Delete</button>
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>
