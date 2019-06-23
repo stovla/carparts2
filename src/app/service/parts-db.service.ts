@@ -26,4 +26,8 @@ export class PartsDbService {
   getPartsFromServer() {
     return this.items;
   }
+
+  addItem(carPart: CarPartModel) {
+    this.itemCollection.add(carPart);
+  }
 }

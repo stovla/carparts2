@@ -6,7 +6,7 @@
 </div>
 <br>
 <div class="collection">
-  <table class="table table-striped">
+  <table class="table-striped">
       <thead class="bg-primary ">
           <tr class="table-success text-center">
               <th class="text-center">ID</th>
@@ -20,8 +20,7 @@
           </tr>
       </thead>
       <tbody *ngIf="carPartsList?.length > 0;else noItems">
-          <tr *ngFor="let carPart of carPartsList"> <!-- *ngFor="let carPart of carPartsList | async; trackBy: trackList()"> --> 
-              <!-- <td>{{ carPart }}</td> -->
+          <tr *ngFor="let carPart of carPartsList">
               <td class="text-center">{{ carPart.id }}</td>
               <td>{{ carPart.partName }}</td>
               <td>{{ carPart.partNumber }}</td>

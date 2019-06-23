@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { FormBuilder, Validators, FormGroup } from "@angular/forms";
+import { CarPartModel } from 'src/app/models/CarPartModel';
+import { PartsDbService } from 'src/app/service/parts-db.service';
 
 @Component({
   selector: 'app-add-new-car-part',
@@ -11,7 +13,18 @@ export class AddNewCarPartComponent implements OnInit {
 
   addNewForm: FormGroup;
   shopsList = ["vwheritage", "justkampers", "eBay"];
-  constructor(private router: Router, private formBuilder: FormBuilder) {
+
+  carPart: CarPartModel = {
+    id: '',
+    instock: false,
+    partName: '',
+    partNumber: '',
+    price: 0,
+    purchaseDate: new Date,
+    webshop: ''
+  }
+
+  constructor(private router: Router, private formBuilder: FormBuilder, private service: PartsDbService) {
   }
 
   ngOnInit() {
@@ -28,6 +41,10 @@ export class AddNewCarPartComponent implements OnInit {
 
   cancel() {
     this.router.navigate(['/']);
+  }
+
+  addItem() {
+    this.service.addItem(this.carPart);
   }
 
   saveNew(part: HTMLObjectElement){
