@@ -15,7 +15,9 @@ export class PartsListComponent implements OnInit {
   constructor(private router: Router, private service: PartsDbService) { }
 
   ngOnInit() {
-    this.carPartsList = this.service.get();
+    this.service.getPartsFromServer().subscribe(items => {
+      this.carPartsList = items;
+    });
   }
 
   addNew() {

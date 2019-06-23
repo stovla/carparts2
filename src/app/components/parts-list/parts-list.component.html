@@ -1,11 +1,11 @@
 <div class="clearfix">
   <p class="pull-left">
-      You have {{ carPartsList.length }} parts in your list.
+      You have {{ carPartsList?.length }} parts in your list.
   </p>
   <button type="button" class="btn btn-primary pull-right" (click)="addNew()">Add Car Part</button>
 </div>
 <br>
-<div class="panel panel-primary">
+<div class="collection">
   <table class="table table-striped">
       <thead class="bg-primary ">
           <tr class="table-success text-center">
@@ -19,7 +19,7 @@
               <th>Actions</th>
           </tr>
       </thead>
-      <tbody>
+      <tbody *ngIf="carPartsList?.length > 0;else noItems">
           <tr *ngFor="let carPart of carPartsList"> <!-- *ngFor="let carPart of carPartsList | async; trackBy: trackList()"> --> 
               <!-- <td>{{ carPart }}</td> -->
               <td class="text-center">{{ carPart.id }}</td>
@@ -35,5 +35,10 @@
               </td>
           </tr>
       </tbody>
+      <ng-template #noItems>
+          <hr>
+          <h5>There are no items in store</h5>
+      </ng-template>
+      
   </table>
 </div>

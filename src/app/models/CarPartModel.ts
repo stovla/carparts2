@@ -1,4 +1,4 @@
-export class CarPartModel {
+export interface CarPartModel {
     id?: string;
     instock: boolean;
     partName: string;
