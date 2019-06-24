@@ -1,38 +1,41 @@
-<div class="carpart-details panel panel-default">
-  <form class="carpart-form" [formGroup]="addNewForm" (ngSubmit)="saveNew(addNewForm.value)">
-      <div class="form-group">
-          <label class="input-group-addon" for="partName">Part Name</label>
-          <input formControlName="partName" name="partName" type="text" id="partName" class="form-control">
+<ng-container>
+    <div class=" carpart-details panel panel-default">
+        <form class="carpart-form" [formGroup]="addNewForm" (ngSubmit)="addItem()">
+            <div class="form-group">
+                <label class="input-group-addon" for="partName">Part Name</label>
+                <input formControlName="partName" name="partName" type="text" id="partName" class="form-control">
+            </div>
+            <div class="form-group">
+                <label class="input-group-addon" for="partNumber">VW OEM number</label>
+                <input formControlName="partNumber" name="partNumber" type="text" id="parNumber" class="form-control">
+            </div>
+            <div class="form-group">
+                <label class="input-group-addon" for="webshop">Webshop</label>
+                <select formControlName="webshop" required class="form-control">
+                    <option value=""></option>
+                    <option *ngFor="let shop of shopsList" [value]="shop">{{ shop }}</option>
+                </select>
+            </div>
+            <!-- <div class="form-group">
+                <label class="input-group-addon" for="">Product URL</label>
+                <input formControlName="partUrl" type="text" name="" class="form-control">
+            </div>
+            <div class="form-group">
+                <label class="input-group-addon" for="">Picture URL</label>
+                <input formControlName="pictureUrl" type="text" name="" class="form-control">
+            </div> -->
+            <div class="form-group">
+                <input formControlName="inStock" id="check" type="checkbox" class="filled-in"/>
+                <span for="check"><label>In Stock</label></span>
+            </div>
+            <div class="form-group">
+                <label class="" for="price">Price</label>
+                <input formControlName="price" required type="text" name="price" class="form-control">
+            </div>
+            <!-- <img class="carpartImage" src="" alt=""> -->
+            <button [class.disabled]="addNewForm.invalid" type="submit" class="btn btn-primary">Save</button>  
+            <button type="button" class="btn btn-alert" (click)="cancel()">Cancel</button>
+        </form>
       </div>
-      <div class="form-group">
-          <label class="input-group-addon" for="partNumber">VW OEM number</label>
-          <input formControlName="partNumber" name="partNumber" type="text" id="parNumber" class="form-control">
-      </div>
-      <div class="form-group">
-          <label class="input-group-addon" for="webshop">Webshop</label>
-          <select formControlName="webshop" required class="form-control">
-              <option value=""></option>
-              <option *ngFor="let shop of shopsList" [value]="shop">{{ shop }}</option>
-          </select>
-      </div>
-      <!-- <div class="form-group">
-          <label class="input-group-addon" for="">Product URL</label>
-          <input formControlName="partUrl" type="text" name="" class="form-control">
-      </div>
-      <div class="form-group">
-          <label class="input-group-addon" for="">Picture URL</label>
-          <input formControlName="pictureUrl" type="text" name="" class="form-control">
-      </div> -->
-      <div class="form-group">
-          <label for="">In Stock</label>
-          <input formControlName="inStock" type="checkbox">
-      </div>
-      <div class="form-group">
-          <label class="input-group-addon" for="price">Price</label>
-          <input formControlName="price" required type="text" name="price" class="form-control">
-      </div>
-      <!-- <img class="carpartImage" src="" alt=""> -->
-      <button [class.disabled]="addNewForm.invalid" type="submit" class="btn btn-primary">Save</button>  
-      <button type="button" class="btn btn-alert" (click)="cancel()">Cancel</button>
-  </form>
-</div>
+</ng-container>
+

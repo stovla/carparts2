@@ -44,7 +44,9 @@ export class AddNewCarPartComponent implements OnInit {
   }
 
   addItem() {
-    this.service.addItem(this.carPart);
+    this.service.addItem(this.addNewForm.value).then( res => {
+      this.router.navigate(['/']);
+    });
   }
 
   saveNew(part: HTMLObjectElement){

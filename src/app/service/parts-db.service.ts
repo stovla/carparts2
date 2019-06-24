@@ -14,7 +14,9 @@ export class PartsDbService {
   items: Observable<CarPartModel[]>;
 
   constructor(private afs: AngularFirestore) {
-    this.items = this.afs.collection<CarPartModel>('carPart').snapshotChanges().pipe(map(changes => {
+    this.itemCollection = this.afs.collection('carPart');
+
+    this.items = this.itemCollection.snapshotChanges().pipe(map(changes => {
       return changes.map(a => {
         const data = a.payload.doc.data() as CarPartModel;
         data.id = a.payload.doc.id;
@@ -28,6 +30,6 @@ export class PartsDbService {
   }
 
   addItem(carPart: CarPartModel) {
-    this.itemCollection.add(carPart);
+    return this.itemCollection.add(carPart);
   }
 }
