@@ -9,7 +9,6 @@
   <table class="table-striped">
       <thead class="bg-primary ">
           <tr class="table-success text-center">
-              <th class="text-center">ID</th>
               <th>Part Name</th>
               <th>VW OEM NUMBER</th>
               <th>Webshop</th>
@@ -21,7 +20,6 @@
       </thead>
       <tbody *ngIf="carPartsList?.length > 0;else noItems">
           <tr *ngFor="let carPart of carPartsList">
-              <td class="text-center">{{ carPart.id }}</td>
               <td>{{ carPart.partName }}</td>
               <td>{{ carPart.partNumber }}</td>
               <td>{{ carPart.webshop }}</td>
@@ -29,8 +27,8 @@
               <td>{{ carPart.purchaseDate }}</td>
               <td>{{ carPart.price }}</td>
               <td>
-                  <button [routerLink]="['details', carPart.id, carPart.partName ]" class="btn btn-sm btn-default glyphicon glyphicon-edit">Details</button>
-                  <button type="button" class="btn btn-sm btn-default glyphicon glyphicon-trash">Delete</button>
+                  <button [routerLink]="['details', carPart.id, carPart.partName ]" class="btn btn-sm btn-default glyphicon glyphicon-edit" (click)="detailsSelected()">Details</button>
+                  <button type="button" class="btn btn-sm btn-default glyphicon glyphicon-trash" (click)="deleteSelected()">Delete</button>
               </td>
           </tr>
       </tbody>

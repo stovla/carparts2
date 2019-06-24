@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { FormBuilder, Validators, FormGroup } from "@angular/forms";
-import { CarPartModel } from 'src/app/models/CarPartModel';
 import { PartsDbService } from 'src/app/service/parts-db.service';
 
 @Component({
@@ -14,16 +13,6 @@ export class AddNewCarPartComponent implements OnInit {
   addNewForm: FormGroup;
   shopsList = ["vwheritage", "justkampers", "eBay"];
 
-  carPart: CarPartModel = {
-    id: '',
-    instock: false,
-    partName: '',
-    partNumber: '',
-    price: 0,
-    purchaseDate: new Date,
-    webshop: ''
-  }
-
   constructor(private router: Router, private formBuilder: FormBuilder, private service: PartsDbService) {
   }
 
@@ -32,10 +21,9 @@ export class AddNewCarPartComponent implements OnInit {
       partName: ['', Validators.required],
       partNumber: ['', Validators.required],
       webshop: ['', Validators.required],
-      partUrl: [''],
-      pictureUrl: [''],
       inStock: [false],
-      price: ['', Validators.required]
+      purchaseDate: new Date,
+      price: [0, Validators.required]
     })
   }
 
@@ -48,9 +36,4 @@ export class AddNewCarPartComponent implements OnInit {
       this.router.navigate(['/']);
     });
   }
-
-  saveNew(part: HTMLObjectElement){
-    console.log(part);
-  }
-
 }

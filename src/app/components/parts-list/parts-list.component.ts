@@ -28,4 +28,12 @@ export class PartsListComponent implements OnInit {
     return carPart ? carPart.id : undefined;
   }
 
+  detailsSelected() {
+    window.alert('Details screen is not yet implemented.'.toUpperCase());
+  }
+
+  deleteSelected() {
+    window.alert('Delete option is not yet implemented.'.toUpperCase());
+  }
+
 }
