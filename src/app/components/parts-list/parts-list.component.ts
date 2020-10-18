@@ -23,13 +23,14 @@ export class PartsListComponent implements OnInit {
   addNew() {
     this.router.navigate(['/add-new']);
   }
-  
+
   trackList(index, carPart) {
     return carPart ? carPart.id : undefined;
   }
 
-  detailsSelected() {
-    window.alert('Details screen is not yet implemented.'.toUpperCase());
+  detailsSelected(carPartId: string) {
+    console.log(carPartId);
+    this.router.navigate([`/add-new/${carPartId}`]);
   }
 
   deleteSelected() {

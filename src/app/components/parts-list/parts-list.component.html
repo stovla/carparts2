@@ -1,41 +1,54 @@
 <div class="clearfix">
   <p class="pull-left">
-      You have {{ carPartsList?.length }} parts in your list.
+    You have {{ carPartsList?.length }} parts in your list.
   </p>
-  <button type="button" class="btn btn-primary pull-right" (click)="addNew()">Add Car Part</button>
+  <button type="button" class="btn btn-primary pull-right" (click)="addNew()">
+    Add Car Part
+  </button>
 </div>
-<br>
+<br />
 <div class="collection">
   <table class="table-striped">
-      <thead class="bg-primary ">
-          <tr class="table-success text-center">
-              <th>Part Name</th>
-              <th>VW OEM NUMBER</th>
-              <th>Webshop</th>
-              <th class="text-center">Have it?</th>
-              <th>Purchase Date</th>
-              <th>Price</th>
-              <th>Actions</th>
-          </tr>
-      </thead>
-      <tbody *ngIf="carPartsList?.length > 0;else noItems">
-          <tr *ngFor="let carPart of carPartsList">
-              <td>{{ carPart.partName }}</td>
-              <td>{{ carPart.partNumber }}</td>
-              <td>{{ carPart.webshop }}</td>
-              <td class="text-center" *ngIf="carPart ? 'Yes' : 'No'">No</td>
-              <td>{{ carPart.purchaseDate }}</td>
-              <td>{{ carPart.price }}</td>
-              <td>
-                  <button [routerLink]="['details', carPart.id, carPart.partName ]" class="btn btn-sm btn-default glyphicon glyphicon-edit" (click)="detailsSelected()">Details</button>
-                  <button type="button" class="btn btn-sm btn-default glyphicon glyphicon-trash" (click)="deleteSelected()">Delete</button>
-              </td>
-          </tr>
-      </tbody>
-      <ng-template #noItems>
-          <hr>
-          <h5>There are no items in store</h5>
-      </ng-template>
-      
+    <thead class="bg-primary">
+      <tr class="table-success text-center">
+        <th>Part Name</th>
+        <th>VW OEM NUMBER</th>
+        <th>Webshop</th>
+        <th class="text-center">Have it?</th>
+        <th>Purchase Date</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="carPartsList?.length > 0; else noItems">
+      <tr *ngFor="let carPart of carPartsList">
+        <td>{{ carPart.partName }}</td>
+        <td>{{ carPart.partNumber }}</td>
+        <td>{{ carPart.webshop }}</td>
+        <td class="text-center" *ngIf="carPart ? 'Yes' : 'No'">No</td>
+        <td>{{ carPart.purchaseDate | date }}</td>
+        <td>{{ carPart.price }}</td>
+        <td>
+          <button
+            [routerLink]="['details', carPart.id, carPart.partName]"
+            class="btn btn-sm btn-default glyphicon glyphicon-edit"
+            (click)="detailsSelected(carPart.id)"
+          >
+            Details
+          </button>
+          <button
+            type="button"
+            class="btn btn-sm btn-default glyphicon glyphicon-trash"
+            (click)="deleteSelected(carPart.id)"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+    <ng-template #noItems>
+      <hr />
+      <h5>There are no items in store</h5>
+    </ng-template>
   </table>
 </div>

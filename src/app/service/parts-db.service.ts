@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { CarPartModel } from '../models/CarPartModel';
 
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
-import { map } from "rxjs/operators";
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +27,20 @@ export class PartsDbService {
 
   getPartsFromServer() {
     return this.items;
+  }
+
+  getItem(carPartId: string) {
+    const docRef = this.afs.collection('carPart').doc(carPartId);
+    this.itemCollection.doc(carPartId).get().subscribe(doc => {
+      if (doc.exists) {
+        return doc.data() as CarPartModel;
+      } else {
+        console.log('doc does not exist');
+        return null;
+      }
+    }, error => console.log);
+    // return this.afs.doc<CarPartModel>('carPart/' + carPartId).valueChanges();
+    // return this.itemCollection.doc(carPartId).snapshotChanges();
   }
 
   addItem(carPart: CarPartModel) {
