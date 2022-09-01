@@ -25,7 +25,7 @@
         <td>{{ carPart.partName }}</td>
         <td class="text-center">{{ carPart.partNumber }}</td>
         <td class="text-center">{{ carPart.webshop }}</td>
-        <td class="text-center" *ngIf="carPart ? 'Yes' : 'No'">No</td>
+        <td class="text-center">{{ carPart.inStock ? 'Yes' : 'No' }}</td>
         <td class="text-center">{{ carPart.purchaseDate | date }}</td>
         <td class="text-center">{{ carPart.price }}</td>
         <td class="action-buttons flex-center">
