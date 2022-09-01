@@ -1,6 +1,6 @@
 export interface CarPartModel {
     id?: string;
-    instock: boolean;
+    inStock: boolean;
     partName: string;
     partNumber: string;
     price: number;
