@@ -25,9 +25,15 @@
                 <input formControlName="price" required type="text" name="price" class="form-control">
             </div>
             <!-- <img class="carpartImage" src="" alt=""> -->
-            <button [class.disabled]="addNewForm.invalid" type="submit" class="btn waves-effect waves-light">Add Item
-            </button>  
-            <button type="button" class="btn btn-alert" (click)="cancel()">Cancel</button>
+            <td class="action-buttons flex-center">
+                <button 
+                    [class.disabled]="addNewForm.invalid"
+                    type="submit"
+                    class="btn waves-effect waves-light">
+                    Add Item
+                </button>  
+                <button type="button" class="btn btn-alert" (click)="cancel()">Cancel</button>
+            </td>
         </form>
       </div>
 </ng-container>

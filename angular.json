@@ -41,7 +41,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -115,5 +114,7 @@
       }
     }
   },
-  "defaultProject": "Carparts2"
+  "cli": {
+    "analytics": "14cae60f-4bd1-4202-a4be-19813f6b9fc1"
+  }
 }

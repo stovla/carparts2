@@ -1,0 +1,12 @@
+table {
+    width: 100%;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.action-buttons .btn {
+    margin: 10px;
+}

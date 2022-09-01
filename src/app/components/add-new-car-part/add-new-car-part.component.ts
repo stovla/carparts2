@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, Validators, UntypedFormGroup } from '@angular/forms';
 import { PartsDbService } from 'src/app/service/parts-db.service';
 import { CarPartModel } from 'src/app/models/CarPartModel';
 import { switchMap } from 'rxjs/operators';
@@ -12,7 +12,7 @@ import { Observable } from 'rxjs/internal/Observable';
   styleUrls: ['./add-new-car-part.component.css'],
 })
 export class AddNewCarPartComponent implements OnInit {
-  addNewForm: FormGroup;
+  addNewForm: UntypedFormGroup;
   shopsList = ['vwheritage', 'justkampers', 'eBay'];
   carItem: CarPartModel;
   carItemID: string;
@@ -21,7 +21,7 @@ export class AddNewCarPartComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private service: PartsDbService
   ) {}
 
@@ -51,6 +51,7 @@ export class AddNewCarPartComponent implements OnInit {
       purchaseDate: new Date().getTime(),
     });
     this.service.addItem(this.addNewForm.value).then((res) => {
+      console.log(res);
       this.router.navigate(['/']);
     });
   }
