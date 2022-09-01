@@ -8,8 +8,8 @@ import { AddNewCarPartComponent } from './components/add-new-car-part/add-new-ca
 import { PartsListComponent } from './components/parts-list/parts-list.component';
 import { PartsDbService } from './service/parts-db.service';
 
-import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 
 @NgModule({
@@ -22,8 +22,8 @@ import { environment } from 'src/environments/environment';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    AngularFirestoreModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore())
   ],
   providers: [
     PartsDbService

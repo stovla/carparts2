@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PartsDbService } from '../../service/parts-db.service';
 import { CarPartModel } from 'src/app/models/CarPartModel';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-parts-list',
@@ -11,13 +12,12 @@ import { CarPartModel } from 'src/app/models/CarPartModel';
 export class PartsListComponent implements OnInit {
 
   partsObj: {};
-  carPartsList: CarPartModel[];
+
+  list$: Observable<CarPartModel[]>;
   constructor(private router: Router, private service: PartsDbService) { }
 
   ngOnInit() {
-    this.service.getPartsFromServer().subscribe(items => {
-      this.carPartsList = items;
-    });
+    this.list$ = this.service.items$
   }
 
   addNew() {
@@ -33,8 +33,10 @@ export class PartsListComponent implements OnInit {
     this.router.navigate([`/add-new/${carPartId}`]);
   }
 
-  deleteSelected() {
-    window.alert('Delete option is not yet implemented.'.toUpperCase());
+  deleteSelected(id: string) {
+    this.service.deleteCarpart(id).then(res => {
+      window.alert('Deleted Car Part'.toUpperCase());
+    });
   }
 
 }

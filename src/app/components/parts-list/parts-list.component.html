@@ -1,6 +1,6 @@
 <div class="clearfix">
   <p class="pull-left">
-    You have {{ carPartsList?.length }} parts in your list.
+    You have {{ (list$ | async).length }} parts in your list.
   </p>
   <button type="button" class="btn btn-primary pull-right" (click)="addNew()">
     Add Car Part
@@ -10,7 +10,7 @@
 <div class="collection">
   <table class="table-striped">
     <thead class="bg-primary">
-      <tr class="table-success text-center">
+      <tr class="table-primary text-center">
         <th>Part Name</th>
         <th>VW OEM NUMBER</th>
         <th>Webshop</th>
@@ -20,15 +20,15 @@
         <th>Actions</th>
       </tr>
     </thead>
-    <tbody *ngIf="carPartsList?.length > 0; else noItems">
-      <tr *ngFor="let carPart of carPartsList">
+    <tbody *ngIf="(list$ | async).length > 0; else noItems">
+      <tr *ngFor="let carPart of list$ | async">
         <td>{{ carPart.partName }}</td>
-        <td>{{ carPart.partNumber }}</td>
-        <td>{{ carPart.webshop }}</td>
+        <td class="text-center">{{ carPart.partNumber }}</td>
+        <td class="text-center">{{ carPart.webshop }}</td>
         <td class="text-center" *ngIf="carPart ? 'Yes' : 'No'">No</td>
-        <td>{{ carPart.purchaseDate | date }}</td>
-        <td>{{ carPart.price }}</td>
-        <td>
+        <td class="text-center">{{ carPart.purchaseDate | date }}</td>
+        <td class="text-center">{{ carPart.price }}</td>
+        <td class="action-buttons flex-center">
           <button
             [routerLink]="['details', carPart.id, carPart.partName]"
             class="btn btn-sm btn-default glyphicon glyphicon-edit"
@@ -38,7 +38,7 @@
           </button>
           <button
             type="button"
-            class="btn btn-sm btn-default glyphicon glyphicon-trash"
+            class="btn btn-sm btn-danger glyphicon glyphicon-trash"
             (click)="deleteSelected(carPart.id)"
           >
             Delete

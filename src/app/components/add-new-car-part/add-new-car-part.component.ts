@@ -51,6 +51,7 @@ export class AddNewCarPartComponent implements OnInit {
       purchaseDate: new Date().getTime(),
     });
     this.service.addItem(this.addNewForm.value).then((res) => {
+      console.log(res);
       this.router.navigate(['/']);
     });
   }

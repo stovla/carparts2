@@ -11,7 +11,8 @@ export const environment = {
     projectId: "car-parts-app",
     storageBucket: "car-parts-app.appspot.com",
     messagingSenderId: "961298362831",
-    appId: "1:961298362831:web:670e091b0dbca3f4"
+    appId: "1:961298362831:web:670e091b0dbca3f4",
+    measurementId: "G-LBG9VVBVC5"
   }
 };
 
